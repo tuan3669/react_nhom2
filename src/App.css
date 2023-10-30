@@ -1,5 +1,28 @@
 .App {
-  text-align: center;
+}
+
+a {
+  color: #282c34;
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+.container {
+  padding: 0 8px;
+  max-width: 1260px;
+  margin: 0 auto;
+}
+.header ul {
+  display: flex;
+  gap: 0 14px;
+  background-color: burlywood;
+}
+.footer ul {
+  display: flex;
+  align-items: center;
+  gap: 0 14px;
+  background-color: aquamarine;
 }
 
 .App-logo {
@@ -9,7 +32,8 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite
+      20s linear;
   }
 }
 
