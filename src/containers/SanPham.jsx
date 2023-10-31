@@ -12,9 +12,9 @@ export default function SanPham ({sanpham}){
         gia : 21321321321321321,
         chitiet : 'Thông số sản phẩm'
     }
-  }
+}
 
-    return (
+return (
         <>
         <div>{chitiet && `Chi tiết sản phẩm ${sanpham.idsp}`}</div>
             <div>
