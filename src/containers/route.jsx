@@ -1,4 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
+import DanhSachSanPhamNoiBat from './DanhSachSanPhamNoiBat';
+import SanPham from './SanPham';
 
 const router = createBrowserRouter([
   {
@@ -8,15 +10,15 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Team />,
+        element: <DanhSachSanPhamNoiBat />,
       },
       {
         path: 'sanpham/:iddm',
-        element: <Team />,
+        element: <DanhSachSanPhamNoiBat />,
       },
       {
         path: 'sanpham/chitiet/:idsp',
-        element: <Team />,
+        element: <SanPham sanpham={null} />
       },
       {
         path: 'dangnhap',
