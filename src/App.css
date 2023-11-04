@@ -24,7 +24,10 @@ ul {
   gap: 0 14px;
   background-color: aquamarine;
 }
-
+.outlet {
+  display: flex;
+  gap: 12px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

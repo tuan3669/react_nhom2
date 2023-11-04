@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
 import AddProduct from './AddProduct';
 import ListProduct from './ListProduct';
 
@@ -19,40 +19,69 @@ const initial = [
     done: false,
   },
 ];
-
+let nextId = 3;
 export default function ProductApp() {
-  const [items, setItems] =
-    useState(initial);
+  const [items, dispatch] = useReducer(
+    productReducer,
+    initial
+  );
+
   function handleAdd(text) {
-    console.log(items);
-    setItems([
-      ...items,
-      {
-        id:
-          items[items.length - 1].id +
-          1,
-        text: text,
-        done: false,
-      },
-    ]);
+    dispatch({
+      type: 'added',
+      id: ++nextId,
+      text: text,
+    });
   }
   function handleChange(item) {
-    setItems(
-      items.map((i) => {
-        if (i.id === item.id) {
-          return item;
+    dispatch({
+      type: 'changed',
+      item: item,
+    });
+  }
+  function handleDelete(itemId) {
+    dispatch({
+      type: 'deleted',
+      id: itemId,
+    });
+  }
+
+  function productReducer(
+    items,
+    action
+  ) {
+    if (action.type === 'added') {
+      console.log('add', action.id);
+      console.log('sstate', items);
+      return [
+        ...items,
+        {
+          id: action.id,
+          text: action.text,
+          done: false,
+        },
+      ];
+    } else if (
+      action.type === 'changed'
+    ) {
+      return items.map((i) => {
+        if (i.id === action.item.id) {
+          return action.item;
         } else {
           return i;
         }
-      })
-    );
-  }
-  function handleDelete(itemId) {
-    setItems(
-      items.filter(
-        (i) => i.id !== itemId
-      )
-    );
+      });
+    } else if (
+      action.type === 'deleted'
+    ) {
+      return items.filter(
+        (i) => i.id !== action.id
+      );
+    } else {
+      throw Error(
+        'Unknown action: ' + action.type
+      );
+    }
   }
 
   return (

@@ -2,18 +2,23 @@ import React from 'react';
 
 export default function Button({
   user,
+  type,
 }) {
-  function handelClick(user, e) {
-    console.log('event ', e);
+  function handelClick(user, type) {
+    console.log('type ', type);
   }
 
   return (
     <button
+      type={type || 'submit'}
       onClick={(e) =>
-        handelClick(user, e)
+        handelClick(
+          user,
+          type || 'submit'
+        )
       }
     >
-      button
+      nhấn
     </button>
   );
 }

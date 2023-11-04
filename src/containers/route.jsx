@@ -1,28 +1,35 @@
 import { createBrowserRouter } from 'react-router-dom';
 import DanhSachSanPhamNoiBat from './DanhSachSanPhamNoiBat';
 import SanPham from './SanPham';
+import App from '../App';
+import Login from './Login';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root />,
-    loader: rootLoader,
+    element: <App />,
     children: [
       {
         index: true,
-        element: <DanhSachSanPhamNoiBat />,
+        element: (
+          <DanhSachSanPhamNoiBat />
+        ),
       },
       {
         path: 'sanpham/:iddm',
-        element: <DanhSachSanPhamNoiBat />,
+        element: (
+          <DanhSachSanPhamNoiBat />
+        ),
       },
       {
         path: 'sanpham/chitiet/:idsp',
-        element: <SanPham sanpham={null} />
+        element: (
+          <SanPham sanpham={null} />
+        ),
       },
       {
         path: 'dangnhap',
-        element: <Team />,
+        element: <Login />,
       },
       {
         path: '*',
@@ -36,3 +43,4 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+export default router;
